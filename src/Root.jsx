@@ -1,5 +1,6 @@
 import Footer from "./components/Footer/Footer";
 import MarqueNews from "./components/MarqueNews/MarqueNews";
+import NavBar from "./components/NavBar/NavBar";
 
 
 
@@ -16,6 +17,7 @@ export default function Root() {
                 <button className="btn bg-[#D72050] border-none text-white hover:text-black text-xl">Letest</button>
                 <MarqueNews></MarqueNews>
                 </div>
+                <NavBar></NavBar>
             </header>
             {/* Main Body */}
             {/* Footer */}
