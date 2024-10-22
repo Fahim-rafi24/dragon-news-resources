@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import MarqueNews from "./components/MarqueNews/MarqueNews";
 import NavBar from "./components/NavBar/NavBar";
@@ -20,6 +21,7 @@ export default function Root() {
                 <NavBar></NavBar>
             </header>
             {/* Main Body */}
+            <Outlet></Outlet>
             {/* Footer */}
             <Footer></Footer>
         </div>
