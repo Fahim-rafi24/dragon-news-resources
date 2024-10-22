@@ -1,13 +1,42 @@
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
+import { useContext } from "react";
+import UserProvider from "../../UserContext/UserContext";
+import auth from "../../FireBase/firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 
 export default function Login() {
+    // userContext
+    const user = useContext(UserProvider);
+    console.log(user)
+
+    const handleLoginClick= e =>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        if (email.length < 6) {
+            console.log('Not valid Email')
+            return;
+        }
+        if (password.length < 6) {
+            console.log('Not valid Password')
+            return;
+        }
+        signInWithEmailAndPassword(auth, email, password)
+        .then(result=>{
+            setUserData(result.user)
+            setUserName(result.user.email)
+        })
+        .catch(error=> console.error(error))
+    }
+
+
     return (
         <section className="py-20 bg-gray-300 min-h-[100vh]">
             <NavBar></NavBar>
-            <form className="p-5 w-2/5 mx-auto rounded-lg bg-gray-100 grid grid-cols-1">
+            <form onSubmit={handleLoginClick} className="p-5 w-2/5 mx-auto rounded-lg bg-gray-100 grid grid-cols-1">
                 <div>
                     <h2 className="text-center text-4xl font-semibold ">Login your account</h2>
                     <hr className="mt-10 mb-5 border-b border-black" />

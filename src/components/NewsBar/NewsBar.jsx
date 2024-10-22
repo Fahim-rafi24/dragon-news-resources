@@ -10,11 +10,6 @@ import Rating from '../../assets/img/Rating.png'
 
 
 export default function NewsBar() {
-    console.log(newsAll[0])
-    // header
-    // const { img, name, published_date } = newsAll[0].author;
-    // const { number } = newsAll[0].rating;
-    // const { title, image_url, details, total_view } = newsAll[0];
     return (
         <div className='min-h-full'>
             <h2 className='pl-5 pt-10 text-xl font-semibold text-gray-600'>Dragon News Home</h2>
@@ -22,9 +17,9 @@ export default function NewsBar() {
 
 
             {/* map All card from json */}
-            {newsAll.map(card => (
+            {newsAll.map((card, inx) => (
                 // each card
-                <div className="card my-9 border rounded-lg">
+                <div key={inx} className="card my-9 border rounded-lg">
                     {/* card Header */}
                     <div className="top bg-gray-100 h-20 flex justify-between rounded-t-lg p-3">
                         <section className='flex'>

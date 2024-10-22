@@ -1,21 +1,43 @@
+// import Button
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
-
 // img
 import Q1Img from '../../assets/img/qZone1.png';
 import Q2Img from '../../assets/img/qZone2.png';
 import Q3Img from '../../assets/img/qZone3.png';
+// firebase auth
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import auth from "../../FireBase/firebase.config";
+import { GithubAuthProvider } from "firebase/auth/web-extension";
+
+
 
 
 
 export default function RightBar() {
+
+    // google
+    const handleGoogleLogIn = () => {
+        const googleProvider = new GoogleAuthProvider();
+        signInWithPopup(auth, googleProvider)
+            .then(result => console.log(result))
+            .catch(error => console.error(error))
+    }
+    // GitHub
+    const handleGitHubLogIn = () => {
+        const gitHubProvider = new GithubAuthProvider();
+        signInWithPopup(auth, gitHubProvider)
+            .then(result => console.log(result))
+            .catch(error => console.error(error))
+    }
+
     return (
         <section className="p-3">
             {/* log in section */}
             <div className="grid gap-1">
                 <h4 className="text-xl font-medium">Login With</h4>
-                <GoogleLoginButton></GoogleLoginButton>
-                <GithubLoginButton></GithubLoginButton>
+                <GoogleLoginButton onClick={handleGoogleLogIn}></GoogleLoginButton>
+                <GithubLoginButton onClick={handleGitHubLogIn}></GithubLoginButton>
             </div>
             {/* find us info */}
             <h4 className="text-xl mt-7 mb-2 font-medium">Find Us</h4>
@@ -26,9 +48,9 @@ export default function RightBar() {
             </div>
             <div className="bg-gray-300 mt-20 p-2 rounded-md">
                 <h4 className="text-xl font-bold">Q-Zone</h4>
-                <img src={Q1Img} alt="img-1" className="my-5"/>
-                <img src={Q2Img} alt="img-2" className="my-5"/>
-                <img src={Q3Img} alt="img-3" className="my-5"/>
+                <img src={Q1Img} alt="img-1" className="my-5" />
+                <img src={Q2Img} alt="img-2" className="my-5" />
+                <img src={Q3Img} alt="img-3" className="my-5" />
             </div>
         </section>
     )

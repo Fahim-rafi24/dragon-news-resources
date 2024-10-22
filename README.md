@@ -16,4 +16,4 @@ add Librarly List :
 03. daisyui
 04. react-fast-marquee
 05. react-icons
-06. 
+06. Firebase
